@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: "Development Version"
+  datasource:
+    url: jdbc:h2:file:./target/H2Database/hospital.mv.db;AUTO_SERVER=true
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  h2:
+    console:
+      enabled: true
