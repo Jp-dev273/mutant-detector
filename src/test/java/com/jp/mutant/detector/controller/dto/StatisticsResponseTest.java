@@ -1,4 +1,4 @@
-package com.jp.mutant.detector.dto;
+package com.jp.mutant.detector.controller.dto;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

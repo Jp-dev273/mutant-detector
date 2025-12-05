@@ -1,4 +1,4 @@
-package com.jp.mutant.detector.dto;
+package com.jp.mutant.detector.controller.dto;
 
 import lombok.AccessLevel;
 import lombok.Getter;

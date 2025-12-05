@@ -1,6 +1,6 @@
 package com.jp.mutant.detector.controller;
 
-import com.jp.mutant.detector.dto.DnaRequest;
+import com.jp.mutant.detector.controller.dto.DnaRequest;
 import com.jp.mutant.detector.model.DnaRaze;
 import com.jp.mutant.detector.service.DnaService;
 import org.junit.jupiter.api.DisplayName;

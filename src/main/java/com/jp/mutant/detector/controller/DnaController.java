@@ -1,8 +1,9 @@
 package com.jp.mutant.detector.controller;
 
-import com.jp.mutant.detector.dto.DnaRequest;
+import com.jp.mutant.detector.controller.dto.DnaRequest;
 import com.jp.mutant.detector.model.DnaRaze;
 import com.jp.mutant.detector.service.DnaService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,7 +21,7 @@ public class DnaController {
     }
 
     @PostMapping
-    public ResponseEntity<?> saveDna(@RequestBody DnaRequest dnaRequest) {
+    public ResponseEntity<?> saveDna(@Valid @RequestBody DnaRequest dnaRequest) {
         DnaRaze result = dnaService.saveDna(dnaRequest);
         if (result == DnaRaze.HUMAN) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).build();

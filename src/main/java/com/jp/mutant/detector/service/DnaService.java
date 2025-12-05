@@ -1,6 +1,6 @@
 package com.jp.mutant.detector.service;
 
-import com.jp.mutant.detector.dto.DnaRequest;
+import com.jp.mutant.detector.controller.dto.DnaRequest;
 import com.jp.mutant.detector.model.DnaRaze;
 import com.jp.mutant.detector.model.DnaResult;
 import com.jp.mutant.detector.repository.DnaResultRepository;

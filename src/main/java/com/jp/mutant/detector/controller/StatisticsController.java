@@ -1,6 +1,6 @@
 package com.jp.mutant.detector.controller;
 
-import com.jp.mutant.detector.dto.StatisticsResponse;
+import com.jp.mutant.detector.controller.dto.StatisticsResponse;
 import com.jp.mutant.detector.service.StatisticsService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
