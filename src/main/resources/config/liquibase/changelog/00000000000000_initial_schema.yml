@@ -1,0 +1,26 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20251106041524-1
+      author: jp
+      changes:
+        - createTable:
+            tableName: dna_result
+            columns:
+              - column:
+                  name: id
+                  type: UUID
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+
+              - column:
+                  name: dna_chain
+                  type: TEXT
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: raze
+                  type: VARCHAR(20)
+                  constraints:
+                    nullable: false
