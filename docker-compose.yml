@@ -1,0 +1,26 @@
+services:
+  db:
+    container_name: "postgres-db"
+    image: postgres:17
+    environment:
+      POSTGRES_PASSWORD: password
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+  backend:
+    container_name: "mutant-detector-server"
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      DB_URL: jdbc:postgresql://db:5432/postgres
+      DB_USER_NAME: postgres
+      DB_PASSWORD: password
+    restart: always
+    depends_on:
+      db:
+        condition: service_healthy
