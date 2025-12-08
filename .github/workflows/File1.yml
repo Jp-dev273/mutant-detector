@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: ContinuousIntegration
 
 # Controls when the workflow will run
 on:
@@ -11,28 +11,29 @@ on:
     branches: [ "main" , "ContinuousIntegration"]
   pull_request:
     branches: [ "main" , "ContinuousIntegration"]
-
   
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
 
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
-          echo Adding 1 line.
+      - name: Test and Package (maven)
+        run: mvn -B -e -T 1C -P prod clean package
+        
+      - name: Build Docker image
+        run: docker build -t ${{ secrets.REGISTRY_USER }}/mutant-detector:latest .
+
+      - name: Login to Docker registry
+        run: echo ${{ secrets.REGISTRY_PASS }} | docker login -u ${{ secrets.REGISTRY_USER }} --password-stdin
+      
+      - name: Push image
+        run: docker push ${{ secrets.REGISTRY_USER }}/mutant-detector:latest
