@@ -1,22 +1,27 @@
 package com.jp.mutant.detector.service;
 
 import com.jp.mutant.detector.repository.DnaResultRepository;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.bean.override.mockito.MockitoBean;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
-@SpringBootTest
+@ExtendWith(MockitoExtension.class)
 class StatisticsServiceTest {
 
-    @Autowired
     private StatisticsService statisticsService;
 
-    @MockitoBean
+    @Mock
     private DnaResultRepository dnaResultRepository;
+
+    @BeforeEach
+    void setUp(){
+        statisticsService = new StatisticsService(dnaResultRepository);
+    }
 
     @Test
     void getStatistics() {
