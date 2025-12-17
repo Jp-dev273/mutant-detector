@@ -100,7 +100,7 @@ Run:
 
 | Method | Endpoint  | Description                             |
 |--------|-----------|-----------------------------------------|
-| POST   | `/mutant` | Checks whether a DNA sequence is mutant |
+| POST   | `/mutants` | Checks whether a DNA sequence is mutant |
 | GET    | `/stats`  | Returns analysis statistics             |
 
 ---
