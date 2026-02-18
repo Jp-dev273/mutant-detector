@@ -75,6 +75,9 @@ jobs:
            -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml 
            -Dsonar.organization=jp-dev273 
            -Dsonar.projectKey=Jp-dev273_mutant-detector
+           -Dsonar.sources=src/main/java
+           -Dsonar.tests=src/test/java
+           -Dsonar.binaries=target/classes
         env:
           SONAR_HOST_URL: https://sonarcloud.io
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
